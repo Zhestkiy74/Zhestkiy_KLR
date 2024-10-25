@@ -6,12 +6,15 @@
     <div class='flex justify-between'>
         <img class='size-20' src="{{ $student->path_img }}" alt="{{ $student->lname }}">
         <p>
-            <a href ="{{route('students.show', $student->id)}}">
+            <a href="{{route('students.show', $student->id)}}">
                 {{ $student->lname }}
             </a>
         </p>
         <p>{{ $student->fname }}</p>
         <p>{{ $student->age }}</p>
+        @isset($student->user->email)
+        <p>{{$student->user->email}}</p>
+        @endisset
         <form method="POST" action="{{route('students.destroy', $student->id)}}">
             @method('delete')
             @csrf

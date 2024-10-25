@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Models\Subject;
 
 Route::get('/', [MainController::class, 'show'])->name('home');
 
@@ -34,5 +36,7 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/students/{student}', [StudentController::class, 'update'])->name('students.update');
 });
+
+Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects.index');
 
 require __DIR__ . '/auth.php';
